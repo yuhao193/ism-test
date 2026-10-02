@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>你是什么主义者 · 人生哲学测试</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23222b3d'/%3E%3Ctext x='50' y='66' font-size='52' text-anchor='middle' fill='%23e9b65f'%3E%E2%97%8B%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+<style>
+:root{
+  --bg:#141a26; --bg2:#1b2232; --panel:#222b3d; --panel2:#293349;
+  --ink:#eef1f6; --muted:#9aa5b8; --line:#343f55;
+  --accent:#e9b65f; --accent-soft:rgba(233,182,95,.14);
+  --id: #6ea8fe; --re:#5cc8a8; --ex:#c78bf5; --he:#f0a35e; --ni:#8a93a8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:radial-gradient(1200px 700px at 70% -10%, #202a3e 0%, var(--bg) 55%);
+  color:var(--ink);
+  font-family:"Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  line-height:1.7; min-height:100vh; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.serif{font-family:"Noto Serif SC","Songti SC",serif}
+.wrap{max-width:880px;margin:0 auto;padding:40px 32px 80px}
+/* ===== 顶部 ===== */
+header.top{display:flex;align-items:center;gap:10px;margin-bottom:34px}
+header.top .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+header.top .brand{font-size:14px;letter-spacing:.14em;color:var(--muted)}
+header.top .brand b{color:var(--accent);font-weight:600}
+/* ===== 视图通用 ===== */
+.view{animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hidden{display:none!important}
+/* ===== 开始页 ===== */
+.hero{text-align:center;padding:56px 20px 30px}
+.hero .kicker{display:inline-block;font-size:13px;letter-spacing:.28em;color:var(--accent);border:1px solid var(--line);padding:6px 16px;border-radius:999px;margin-bottom:30px}
+.hero h1{font-size:54px;font-weight:900;line-height:1.2;letter-spacing:.02em}
+.hero h1 .thin{display:block;font-weight:400;color:var(--muted);font-size:22px;margin-top:12px;letter-spacing:.5em}
+.hero p.sub{color:var(--muted);max-width:520px;margin:28px auto 0;font-size:15px}
+.hero .countline{margin-top:34px;display:flex;justify-content:center;gap:38px;color:var(--muted);font-size:14px}
+.hero .countline span b{display:block;font-family:"Noto Serif SC",serif;font-size:26px;color:var(--ink);font-weight:700;margin-bottom:2px}
+.btn{
+  display:inline-block;background:var(--accent);color:#1c1504;font-weight:700;
+  padding:14px 40px;border-radius:10px;font-size:16px;border:none;cursor:pointer;
+  font-family:inherit;transition:transform .15s, box-shadow .15s, background .2s;
+  box-shadow:0 6px 20px rgba(233,182,95,.25);
+}
+.btn:hover{transform:translateY(-2px);background:#f2c57a;box-shadow:0 10px 26px rgba(233,182,95,.32)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn.ghost:hover{background:var(--panel);box-shadow:none}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.hero .start{margin-top:44px}
+.hero .note{margin-top:22px;font-size:13px;color:#6c7891}
+/* ===== 答题页 ===== */
+.quiz-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.quiz-head .qnum{font-family:"Noto Serif SC",serif;font-size:17px;color:var(--accent);font-weight:700}
+.quiz-head .qnum span{font-size:13px;color:var(--muted);font-weight:400}
+.progress{height:4px;background:var(--panel);border-radius:2px;overflow:hidden;margin-bottom:34px}
+.progress i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#f2c57a);border-radius:2px;transition:width .35s ease}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:34px 36px;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.card h2{font-size:23px;font-weight:700;line-height:1.55;margin-bottom:30px}
+.opts{display:grid;gap:14px}
+.opt{
+  position:relative;display:block;text-align:left;width:100%;
+  background:var(--panel2);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px 16px 54px;color:var(--ink);font-size:15px;cursor:pointer;
+  font-family:inherit;line-height:1.6;transition:border-color .15s, background .15s, transform .1s;
+}
+.opt .tag{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted);transition:.15s}
+.opt:hover{border-color:#4a587a;background:#2c3750;transform:translateX(3px)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .tag{background:var(--accent);border-color:var(--accent);color:#1c1504;font-weight:700}
+.quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px}
+.quiz-nav .hint{font-size:13px;color:#6c7891}
+/* ===== 结果页 ===== */
+.result-hero{text-align:center;margin-bottom:26px}
+.result-hero .kicker{font-size:13px;letter-spacing:.24em;color:var(--muted)}
+.result-hero h1{font-size:44px;font-weight:900;margin-top:10px}
+.result-hero h1 em{font-style:normal;color:var(--accent)}
+.result-hero .pct{font-size:15px;color:var(--muted);margin-top:8px}
+.result-hero .pct b{color:var(--accent);font-size:22px;font-family:"Noto Serif SC",serif}
+.badge{display:inline-block;margin-top:18px;padding:8px 22px;border-radius:999px;font-size:14px;font-weight:600;border:1px solid var(--line);background:var(--panel)}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;margin-top:6px}
+.chart-card,.desc-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+.card-title{font-size:13px;letter-spacing:.18em;color:var(--muted);margin-bottom:14px}
+.ism-list{display:grid;gap:12px}
+.ism-row{display:grid;grid-template-columns:86px 1fr 44px;align-items:center;gap:12px}
+.ism-row .name{font-size:14px;font-weight:600}
+.ism-row .bar{height:10px;background:var(--panel2);border-radius:6px;overflow:hidden}
+.ism-row .bar i{display:block;height:100%;border-radius:6px;transition:width .6s ease}
+.ism-row .val{font-family:"Noto Serif SC",serif;font-size:14px;text-align:right;color:var(--muted)}
+.desc{margin-top:4px;font-size:15px;color:#d4dae6;line-height:1.85}
+.desc .lead{font-family:"Noto Serif SC",serif;font-size:17px;color:var(--ink);font-weight:600;display:block;margin-bottom:8px}
+.desc .kw{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.kw span{font-size:12px;padding:4px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.actions{display:flex;justify-content:center;gap:14px;margin-top:30px}
+footer{text-align:center;color:#5d6a83;font-size:12px;margin-top:60px;letter-spacing:.06em}
+@media(max-width:760px){
+  .wrap{padding:26px 16px 60px}
+  .hero h1{font-size:38px}
+  .card{padding:24px 20px}
+  .grid{grid-template-columns:1fr}
+  .ism-row{grid-template-columns:70px 1fr 40px}
+  .hero .countline{gap:24px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== 视图：开始 ===== -->
+  <section id="view-start" class="view">
+    <header class="top"><span class="dot"></span><div class="brand">人生哲学 · <b>主义者测验</b></div></header>
+    <div class="hero">
+      <h1>你是什么<br><span class="thin">主义者？</span></h1>
+      <p class="sub">主义者身份是一面镜子，映照过去的因果，如今的面貌和未来的选择，看看你心底住着哪一种「主义」。</p>
+      <div class="countline">
+        <span><b>20</b>道题目</span>
+        <span><b>5</b>种主义</span>
+        <span><b>2</b>分钟</span>
+      </div>
+      <div class="start"><button class="btn" id="btnStart">开始测试</button></div>
+    </div>
+  </section>
+
+  <!-- ===== 视图：答题 ===== -->
+  <section id="view-quiz" class="view hidden">
+    <header class="top"><span class="dot"></span><div class="brand">第 <span id="hNum">1</span> 题 / 共 20 题</div></header>
+    <div class="quiz-head">
+      <div class="qnum" id="qnumLabel">第 1 题</div>
+      <button class="btn ghost" id="btnRestart" style="padding:8px 18px;font-size:13px">重新开始</button>
+    </div>
+    <div class="progress"><i id="progBar"></i></div>
+    <div class="card">
+      <h2 id="qTitle"></h2>
+      <div class="opts" id="optsBox"></div>
+      <div class="quiz-nav">
+        <button class="btn ghost" id="btnPrev" style="padding:10px 26px;font-size:14px">上一题</button>
+        <button class="btn" id="btnNext" style="padding:10px 30px;font-size:14px">下一题</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 视图：结果 ===== -->
+  <section id="view-result" class="view hidden">
+    <header class="top"><span class="dot"></span><div class="brand">你的 · <b>主义画像</b></div></header>
+    <div class="result-hero">
+      <h1 id="resTitle"></h1>
+      <div class="pct">该主义倾向强度 <b id="resPct"></b></div>
+    </div>
+    <div class="grid">
+      <div class="desc-card" style="grid-column:1/-1">
+        <p class="desc"><span class="lead" id="descLead"></span><span id="descBody"></span></p>
+        <div class="ism-list" id="ismList" style="margin-top:18px"></div>
+        <div class="kw" id="kwBox"></div>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn ghost" id="btnAgain">再测一次</button>
+    </div>
+  </section>
+
+  <footer>主义测验 · 献给仍在探索自我的你</footer>
+</div>
+
+<script>
+/* ============================================================
+   主义定义
+============================================================ */
+const ISMS = {
+  IDL:{name:"理想主义",color:"var(--id)",css:"#6ea8fe",descLead:"你相信世界可以更好。",desc:"理想主义者的目光总落在应然之上——他们不满足于现状，愿意为更美好的图景投入热情与坚持。你重视信念、愿景与价值，哪怕前路漫漫，也愿意做那个先点亮火把的人。",
+       kw:["信念","愿景","坚持","热忱"]},
+  REL:{name:"现实主义",color:"var(--re)",css:"#5cc8a8",descLead:"你务实、清醒，看见事物本来的样子。",desc:"现实主义不追逐幻影，而是直面眼前的约束与可能。你习惯权衡现实、计算利弊，把理想落成可执行的一步步。对你而言，能真正改变生活的，远比漂亮的空谈更重要。",
+       kw:["务实","清醒","权衡","效率"]},
+  EXT:{name:"存在主义",color:"var(--ex)",css:"#c78bf5",descLead:"你相信意义由自己定义。",desc:"存在主义拒绝被标签与既定的答案束缚。你重视自由选择、个体体验与当下的真实感受，坦然接受不确定，并在其中活出自己的版本。世界没有说明书，而你就是作者。",
+       kw:["自由","选择","体验","真实"]},
+  HED:{name:"享乐主义",color:"var(--he)",css:"#f0a35e",descLead:"你忠于感受，活在当下。",desc:"享乐主义并不浅薄，它真诚地承认快乐与舒适是生活重要的组成部分。你懂得善待自己，为愉悦、感官与松弛留出位置，不被过度的责任压垮。能好好享受此刻，就是你的生活智慧。",
+       kw:["愉悦","当下","善待","松弛"]},
+  NIL:{name:"虚无主义",color:"var(--ni)",css:"#8a93a8",descLead:"你对宏大叙事保持冷静的怀疑。",desc:"虚无主义并非绝望，而是一种清醒的审视：你很少被口号与宏大意义轻易打动，倾向看透表象、保持距离。这种疏离让你在喧嚣中拥有难得的冷静，但也提醒你，意义的空白正等待你自己去填满。",
+       kw:["清醒","怀疑","疏离","审视"]}
+};
+
+/* 题目数据：每道题 4 个选项，s 为对应主义键 */
+const QUESTIONS = [
+  {q:"你觉得人生的意义从何而来？",
+   opts:[{t:"源于先天崇高使命",s:"IDL"},{t:"由自己选择与行动创造",s:"EXT"},{t:"源于现实生活成就",s:"REL"},{t:"本就不存在先天意义",s:"NIL"}]},
+  {q:"理想低薪工作 vs 高薪枯燥工作，你选？",
+   opts:[{t:"选理想的工作",s:"IDL"},{t:"选自己认同的",s:"EXT"},{t:"选收入高的",s:"REL"},{t:"选轻松钱多的",s:"HED"}]},
+  {q:"你怎么看待道德与规则？",
+   opts:[{t:"存在绝对善恶真理",s:"IDL"},{t:"由人自主约定选择",s:"EXT"},{t:"是现实运行底线",s:"REL"},{t:"只是人为利益共识",s:"NIL"}]},
+  {q:"当下快乐和长远目标，你更倾向？",
+   opts:[{t:"为长远目标克制当下",s:"IDL"},{t:"由自己定义轻重",s:"EXT"},{t:"平衡现实与长远",s:"REL"},{t:"优先当下快乐",s:"HED"}]},
+  {q:"做重大决定的核心依据是？",
+   opts:[{t:"内心的原则与信念",s:"IDL"},{t:"自己真实的意愿",s:"EXT"},{t:"现实条件与收益",s:"REL"},{t:"自身的舒适开心",s:"HED"}]},
+  {q:"人生价值该如何衡量？",
+   opts:[{t:"看理想实现程度",s:"IDL"},{t:"由自身感受定义",s:"EXT"},{t:"看实际成就贡献",s:"REL"},{t:"本无固有价值标准",s:"NIL"}]},
+  {q:"理想与现实规则冲突时，你会？",
+   opts:[{t:"坚持理想绝不妥协",s:"IDL"},{t:"自主判断并承担后果",s:"EXT"},{t:"调整自己适应现实",s:"REL"},{t:"怎么选都无差别",s:"NIL"}]},
+  {q:"怎么看待人生的痛苦与挫折？",
+   opts:[{t:"是通往理想的磨练",s:"IDL"},{t:"是自选人生的一部分",s:"EXT"},{t:"是需要解决的问题",s:"REL"},{t:"是该避开的坏事",s:"HED"}]},
+  {q:"你相信存在永恒的绝对真理吗？",
+   opts:[{t:"存在，是世界根本",s:"IDL"},{t:"不重要，人自定义",s:"EXT"},{t:"没有，只有客观规律",s:"REL"},{t:"不存在，是主观建构",s:"NIL"}]},
+  {q:"永远快乐但不再成长的生活，你接受吗？",
+   opts:[{t:"不接受，要追求精神高度",s:"IDL"},{t:"不接受，不愿放弃选择自由",s:"EXT"},{t:"不现实，快乐无法持续",s:"REL"},{t:"接受，快乐就是终极目的",s:"HED"}]},
+  {q:"你努力奋斗的根本目的是？",
+   opts:[{t:"实现理想抱负",s:"IDL"},{t:"活成自己想要的样子",s:"EXT"},{t:"提升生活条件与地位",s:"REL"},{t:"好好享受人生",s:"HED"}]},
+  {q:"怎么看待「努力也没结果」？",
+   opts:[{t:"付出过程本身有意义",s:"IDL"},{t:"选择努力就是自我确认",s:"EXT"},{t:"正常，现实本就如此",s:"REL"},{t:"本来就没什么真结果",s:"NIL"}]},
+  {q:"面对主流价值观，你的态度是？",
+   opts:[{t:"错的就要反对",s:"IDL"},{t:"自主选择认同与否",s:"EXT"},{t:"尽量顺应减少阻碍",s:"REL"},{t:"无所谓对错，随波逐流",s:"NIL"}]},
+  {q:"你更认同哪种生活态度？",
+   opts:[{t:"向着崇高目标攀登",s:"IDL"},{t:"尽情体验，自定义活法",s:"EXT"},{t:"脚踏实地稳步前进",s:"REL"},{t:"及时行乐，开心就好",s:"HED"}]},
+  {q:"你觉得真正的自由是什么？",
+   opts:[{t:"遵从内心良知与理想",s:"IDL"},{t:"自主选择并承担后果",s:"EXT"},{t:"拥有足够现实资源",s:"REL"},{t:"自由本质上不存在",s:"NIL"}]},
+  {q:"意识到很多事没意义时，你会？",
+   opts:[{t:"寻找更崇高的价值",s:"IDL"},{t:"自己创造新的意义",s:"EXT"},{t:"先做好手头的事",s:"REL"},{t:"轻松了，不用勉强自己",s:"HED"}]},
+  {q:"着手做事前，你首先考虑？",
+   opts:[{t:"这件事是否正确",s:"IDL"},{t:"是不是自己想做的",s:"EXT"},{t:"能不能做成、收益如何",s:"REL"},{t:"好不好玩、开不开心",s:"HED"}]},
+  {q:"你怎么看待死亡？",
+   opts:[{t:"精神与理想可以永存",s:"IDL"},{t:"有限让选择更有意义",s:"EXT"},{t:"是必然的自然规律",s:"REL"},{t:"是一切的彻底终结",s:"NIL"}]},
+  {q:"对于「别人的期待」，你怎么看？",
+   opts:[{t:"符合正义就值得达成",s:"IDL"},{t:"与我无关，我为自己负责",s:"EXT"},{t:"是维持关系的必要方式",s:"REL"},{t:"毫无意义，不必在意",s:"NIL"}]},
+  {q:"人类文明发展的终极方向是？",
+   opts:[{t:"走向更高的正义与真理",s:"IDL"},{t:"无固定方向，由人塑造",s:"EXT"},{t:"走向更发达的生产力",s:"REL"},{t:"没有终极方向，终将消亡",s:"NIL"}]}
+];
+
+/* ============================================================
+   状态
+============================================================ */
+let answers = new Array(QUESTIONS.length).fill(null);
+let cur = 0;
+
+const $ = id => document.getElementById(id);
+
+/* ============================================================
+   视图切换
+============================================================ */
+function showView(name){
+  ["start","quiz","result"].forEach(v=>$("view-"+v).classList.toggle("hidden", v!==name));
+  if(name==="result") setTimeout(renderResult, 60);
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+/* ============================================================
+   答题逻辑
+============================================================ */
+function renderQ(){
+  const q = QUESTIONS[cur];
+  $("qnumLabel").textContent = "第 " + (cur+1) + " 题";
+  $("hNum").textContent = cur+1;
+  $("qTitle").textContent = q.q;
+  $("progBar").style.width = ((cur)/(QUESTIONS.length-1)*100) + "%";
+  $("optsBox").innerHTML = "";
+  const labels = ["A","B","C","D"];
+  q.opts.forEach((o,i)=>{
+    const b = document.createElement("button");
+    b.className = "opt" + (answers[cur]===i?" sel":"");
+    b.innerHTML = '<span class="tag">'+labels[i]+'</span>'+o.t;
+    b.onclick = ()=>{ answers[cur]=i; renderQ(); };
+    $("optsBox").appendChild(b);
+  });
+  $("btnPrev").disabled = cur===0;
+  $("btnNext").textContent = cur===QUESTIONS.length-1 ? "查看结果" : "下一题";
+}
+function nextQ(){
+  if(cur < QUESTIONS.length-1){ cur++; renderQ(); }
+  else {
+    if(answers.some(a=>a===null)){ return; }
+    showView("result");
+  }
+}
+function prevQ(){ if(cur>0){ cur--; renderQ(); } }
+
+/* ============================================================
+   结果
+============================================================ */
+function renderResult(){
+  const scores = {IDL:0,REL:0,EXT:0,HED:0,NIL:0};
+  for(let i=0;i<QUESTIONS.length;i++){
+    const opt = QUESTIONS[i].opts[answers[i]];
+    scores[opt.s]++;
+  }
+  const total = QUESTIONS.length;
+  const keys = Object.keys(scores);
+  const topKey = keys.reduce((a,b)=> scores[b]>scores[a]?b:a);
+  const top = ISMS[topKey];
+  const topPct = Math.round(scores[topKey]/total*100);
+
+  $("resTitle").innerHTML = "你是一名 <em>"+top.name+"者</em>";
+  $("resPct").textContent = topPct + "%";
+  $("descLead").textContent = top.descLead;
+  $("descBody").textContent = top.desc;
+
+  // 列表
+  $("ismList").innerHTML = "";
+  const sorted = keys.slice().sort((a,b)=>scores[b]-scores[a]);
+  sorted.forEach(k=>{
+    const s = scores[k], pct = Math.round(s/total*100);
+    const row = document.createElement("div");
+    row.className = "ism-row";
+    row.innerHTML = '<span class="name" style="color:'+ISMS[k].css+'">'+ISMS[k].name+'</span>'+
+      '<span class="bar"><i style="width:'+pct+'%;background:'+ISMS[k].css+'"></i></span>'+
+      '<span class="val">'+pct+'%</span>';
+    $("ismList").appendChild(row);
+  });
+
+  // 关键词
+  $("kwBox").innerHTML = top.kw.map(k=>"<span>"+k+"</span>").join("");
+}
+
+/* ============================================================
+   事件
+============================================================ */
+$("btnStart").onclick = ()=>{ showView("quiz"); renderQ(); };
+$("btnNext").onclick = nextQ;
+$("btnPrev").onclick = prevQ;
+$("btnAgain").onclick = ()=>{ answers = new Array(QUESTIONS.length).fill(null); cur=0; showView("quiz"); renderQ(); };
+$("btnRestart").onclick = $("btnAgain").onclick;
+document.addEventListener("keydown", e=>{
+  if($("view-quiz").classList.contains("hidden")) return;
+  if(["1","2","3","4"].includes(e.key)){ const i=+e.key-1; if(i<QUESTIONS[cur].opts.length){answers[cur]=i; renderQ();} }
+  else if(e.key==="ArrowRight") nextQ();
+  else if(e.key==="ArrowLeft") prevQ();
+});
+</script>
+</body>
+</html>
